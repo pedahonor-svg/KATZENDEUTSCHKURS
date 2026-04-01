@@ -172,7 +172,7 @@ nav ul li a:hover {
   box-shadow:0 3px 8px rgba(0,0,0,0.2);
 }
 
-/* 🐾 Fliegende „Pfoten“ (dein Bild) */
+/* 🐾 Fliegende Pfoten */
 .paw {
   position: fixed;
   width: 70px;
@@ -186,13 +186,20 @@ nav ul li a:hover {
   0%   { transform: translate(-10vw, -10vh) rotate(-15deg); }
   100% { transform: translate(120vw, 120vh) rotate(15deg); }
 }
+
+/* Kontaktformular Animation */
+@keyframes floatCat {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
 </style>
 </head>
 <body>
 
 <!-- INTRO SCREEN -->
 <div id="introScreen">
-    <img id="introCat" src="https://e7.pngegg.com/pngimages/572/286/png-clipart-rip-n-dip-logo-middle-finger-cat-decal-sticker-cat-glass-white.png" alt="Cat">
+    <img id="introCat" src="https://e7.pngegg.com/pngimages/572/286/png-clipart-rip-n-dip-logo-middle-finger-cat-decal-sticker-cat-glass-white.png">
     <div id="introBubble">Willkommen zum Sprachkurs!</div>
 </div>
 
@@ -208,7 +215,6 @@ nav ul li a:hover {
 
     <div class="speech-box">
         So viele Besucher waren bereits hier:<br>
-        <!-- GLOBALER Counter direkt in der Sprechblase -->
         <div id="sfc4gt4lrbhjmxwsm9jqzgaencmrublnmxx"></div>
         <script type="text/javascript" src="https://counter1.optistats.ovh/private/counter.js?c=4gt4lrbhjmxwsm9jqzgaencmrublnmxx&down=async" async></script>
         <noscript>
@@ -227,6 +233,7 @@ nav ul li a:hover {
     <li><a href="#medien">Medien</a></li>
     <li><a href="#erfolge">Erfolge</a></li>
     <li><a href="#angebot">Angebot</a></li>
+    <li><a href="#kontakt">Kontakt</a></li>
   </ul>
 
   <div class="hamburger" onclick="toggleMenu()">
@@ -287,6 +294,68 @@ nav ul li a:hover {
 
 </div>
 
+<!-- 🐱 Kontaktformular -->
+<div id="kontakt" style="max-width:700px;margin:40px auto;padding:25px;background:white;border-radius:15px;box-shadow:0 4px 12px rgba(0,0,0,0.15);">
+    
+    <h2 style="text-align:center;font-size:28px;margin-bottom:10px;">📬 Kontakt aufnehmen</h2>
+    <p style="text-align:center;color:#555;margin-bottom:25px;">
+        Hast du Fragen? Schreib mir einfach!
+    </p>
+
+    <!-- Sprechende Katze -->
+    <div style="text-align:center;margin-bottom:20px;position:relative;">
+        <img src="https://e7.pngegg.com/pngimages/572/286/png-clipart-rip-n-dip-logo-middle-finger-cat-decal-sticker-cat-glass-white.png" 
+             style="width:140px;animation:floatCat 2s infinite ease-in-out;border-radius:20px;">
+        
+        <div style="
+            position:absolute;
+            top:-10px;
+            left:50%;
+            transform:translateX(-50%);
+            background:#ff9800;
+            color:white;
+            padding:10px 18px;
+            border-radius:15px;
+            font-size:18px;
+            font-weight:bold;
+            box-shadow:0 3px 8px rgba(0,0,0,0.2);
+        ">
+            Schreib mir! 🐾
+        </div>
+    </div>
+
+    <form id="contactForm" action="https://formspree.io/f/mvzvqzjr" method="POST" style="display:flex;flex-direction:column;gap:15px;">
+
+        <input type="text" name="_gotcha" style="display:none;">
+
+        <label style="font-weight:bold;">🐱 Dein Name</label>
+        <input type="text" name="name" required
+               style="padding:12px;border-radius:8px;border:1px solid #ccc;font-size:16px;background:#fff8e1;">
+
+        <label style="font-weight:bold;">📧 Deine E-Mail</label>
+        <input type="email" name="email" required
+               style="padding:12px;border-radius:8px;border:1px solid #ccc;font-size:16px;background:#fff8e1;">
+
+        <label style="font-weight:bold;">💬 Nachricht</label>
+        <textarea name="message" rows="5" required
+                  style="padding:12px;border-radius:8px;border:1px solid #ccc;font-size:16px;background:#fff8e1;"></textarea>
+
+        <button type="submit"
+                style="padding:14px;background:#ff9800;color:white;font-size:18px;border:none;border-radius:10px;cursor:pointer;font-weight:bold;">
+            🐾 Nachricht senden
+        </button>
+    </form>
+
+    <p id="formSuccess" style="display:none;text-align:center;margin-top:20px;color:green;font-weight:bold;">
+        ✔ Deine Nachricht wurde erfolgreich gesendet!
+    </p>
+</div>
+
+<!-- Katzen-Sound -->
+<audio id="catSound">
+  <source src="https://www.fesliyanstudios.com/play-mp3/387" type="audio/mpeg">
+</audio>
+
 <script>
 // Hamburger Menü
 function toggleMenu(){
@@ -310,7 +379,7 @@ function signup(){
  alert("Erfolg! Deine Katze wurde angemeldet. Der Gratis-Schopf ist reserviert.");
 }
 
-// Live Counter (Fake „Leute schauen gerade zu“)
+// Live Counter
 setInterval(()=>{
  let num = Math.floor(Math.random()*50)+10;
  document.getElementById('counter').innerText = "👀 " + num + " Leute schauen sich das gerade an";
@@ -326,7 +395,7 @@ setInterval(()=>{
  if(time > 0) time--;
 },1000);
 
-// 🐾 Fliegende „Pfoten“ (dein Bild)
+// Pfoten fliegen lassen
 function spawnPaw(){
   const paw = document.createElement("img");
   paw.src = "https://e7.pngegg.com/pngimages/572/286/png-clipart-rip-n-dip-logo-middle-finger-cat-decal-sticker-cat-glass-white.png";
@@ -337,16 +406,26 @@ function spawnPaw(){
 }
 setInterval(spawnPaw, 1800);
 
-// Intro-Text zufällig
-const introTexts = [
-  "Willkommen zum Sprachkurs!",
-  "Miau! Bereit zu lernen?",
-  "Deine Katze wird begeistert sein.",
-  "Los geht’s, Mensch!",
-  "Heute wird gemiaut!"
-];
-document.getElementById("introBubble").innerText =
-  introTexts[Math.floor(Math.random()*introTexts.length)];
+// Kontaktformular + Sound
+document.getElementById("contactForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const form = e.target;
+    const sound = document.getElementById("catSound");
+
+    sound.play();
+
+    fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { "Accept": "application/json" }
+    }).then(response => {
+        if (response.ok) {
+            document.getElementById("formSuccess").style.display = "block";
+            form.reset();
+        }
+    });
+});
 </script>
 
 </body>
