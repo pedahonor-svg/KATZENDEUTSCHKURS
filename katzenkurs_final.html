@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deutschkurs für Katzen</title>
+<style>
+body {font-family: Arial;margin:0;background:#f4f4f4;}
+header {background:#ff9800;color:white;text-align:center;padding:20px;}
+.container {max-width:900px;margin:20px auto;background:white;padding:25px;border-radius:12px;}
+.cta {display:block;background:#4caf50;color:white;text-align:center;padding:15px;margin-top:20px;border-radius:8px;text-decoration:none;}
+.review {background:#fafafa;padding:10px;margin:10px 0;border-left:4px solid orange;}
+.logos img {height:40px;margin:10px;}
+.cats img {width:100%;border-radius:10px;margin-top:10px;}
+.counter {color:red;font-weight:bold;text-align:center;margin:15px 0;}
+.badge {background:gold;padding:5px 10px;border-radius:6px;font-size:12px;}
+</style>
+</head>
+<body>
+
+<header>
+<h1>🐱 Deutschkurs für Katzen</h1>
+<p>Offiziell zertifiziert & völlig absurd</p>
+<span class="badge">⭐ 4.9/5 (1.283 Bewertungen)</span>
+</header>
+
+<div class="container">
+
+<h2>🔥 Bekannt aus Medien</h2>
+<div class="logos">
+<img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/RTL_logo_2017.svg">
+<img src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Spiegel_Logo.svg">
+<img src="https://upload.wikimedia.org/wikipedia/commons/5/5a/Trustpilot_logo.png">
+</div>
+
+<div class="counter" id="counter">👀 17 Leute schauen sich das gerade an</div>
+
+<h2>🐱 Erfolgreiche Katzen</h2>
+<div class="cats">
+<img src="https://images.unsplash.com/photo-1518791841217-8f162f1e1131">
+<img src="https://images.unsplash.com/photo-1592194996308-7b43878e84a6">
+</div>
+
+<p><strong>Dieser Kurs ist speziell für Gismo und MacGyver gedacht, zwei wundervolle Katzen aus Kolsass.</strong></p>
+
+<h2>⭐ Bewertungen</h2>
+<div class="review">⭐⭐⭐⭐⭐ „Meine Katze nennt mich jetzt ‘Diener’. 5 Sterne.“</div>
+<div class="review">⭐⭐⭐⭐⭐ „Hat jetzt einen Akzent. Weiß nicht warum.“</div>
+<div class="review">⭐⭐⭐⭐⭐ „Sie sagt ‘füttere mich’… ständig.“</div>
+
+<h2>🤖 Katzen-Chatbot</h2>
+<input id="chatInput" placeholder="Sag etwas zu deiner Katze...">
+<button onclick="reply()">Antwort erhalten</button>
+<p id="chatOutput"></p>
+
+<h2>🎁 Features</h2>
+<ul>
+<li>KI Miau Übersetzer</li>
+<li>Telepathisches Lernen</li>
+<li>Traum-basierte Grammatik</li>
+<li>Wiener Katzen-Dialekt</li>
+</ul>
+
+<a class="cta" href="#" onclick="signup()">Jetzt starten</a>
+
+</div>
+
+<script>
+function reply(){
+ let responses = [
+  "Deine Katze will Snacks.",
+  "Sie respektiert dich nicht.",
+  "Spiel. Jetzt.",
+  "Du wirst beobachtet.",
+  "Füttere mich, Mensch."
+ ];
+ document.getElementById('chatOutput').innerText = responses[Math.floor(Math.random()*responses.length)];
+}
+
+function signup(){
+ alert("Erfolg! Deine Katze wurde automatisch angemeldet.");
+}
+
+setInterval(()=>{
+ let num = Math.floor(Math.random()*50)+10;
+ document.getElementById('counter').innerText = "👀 " + num + " Leute schauen sich das gerade an";
+},3000);
+</script>
+
+</body>
+</html>
