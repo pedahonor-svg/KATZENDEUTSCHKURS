@@ -97,6 +97,30 @@ nav ul li a:hover {
 
 .counter {color:red;font-weight:bold;text-align:center;margin:15px 0;}
 #timer {font-size:20px;color:#d32f2f;font-weight:bold;text-align:center;margin-top:10px;}
+
+/* Animierte Katze */
+.cat-counter {
+  width: 120px;
+  animation: wiggle 1s infinite ease-in-out;
+  display:block;
+  margin:0 auto;
+}
+
+@keyframes wiggle {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(3deg); }
+  50% { transform: rotate(0deg); }
+  75% { transform: rotate(-3deg); }
+  100% { transform: rotate(0deg); }
+}
+
+#visitorCounter {
+  font-size: 22px;
+  font-weight: bold;
+  text-align:center;
+  margin-top:10px;
+  color:#333;
+}
 </style>
 </head>
 <body>
@@ -106,6 +130,12 @@ nav ul li a:hover {
 <p>Offiziell zertifiziert & völlig absurd</p>
 <span class="badge">⭐ 4.9/5 (1.283 Bewertungen)</span>
 </header>
+
+<!-- 🐱 Animierte Katze + Besucherzähler -->
+<div style="text-align:center; margin-top:20px;">
+    <img class="cat-counter" src="https://media.tenor.com/4kFhF38sZxkAAAAi/cat-cute.gif" alt="Cat">
+    <div id="visitorCounter">Besucher: ...</div>
+</div>
 
 <!-- NAVIGATION -->
 <nav>
@@ -213,6 +243,18 @@ setInterval(()=>{
  document.getElementById('timer').innerText = `⏳ ${min}:${sec}`;
  if(time > 0) time--;
 },1000);
+
+// Besucherzähler (lokal)
+let catCount = localStorage.getItem("catVisitorCount");
+
+if (!catCount) {
+  catCount = 0;
+}
+
+catCount++;
+localStorage.setItem("catVisitorCount", catCount);
+
+document.getElementById("visitorCounter").innerText = "Besucher: " + catCount;
 </script>
 
 </body>
