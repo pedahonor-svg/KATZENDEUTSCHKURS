@@ -8,130 +8,45 @@
 <style>
 body {font-family: Arial;margin:0;background:#f4f4f4;}
 header {background:#ff9800;color:white;text-align:center;padding:25px;}
-nav {background:white;padding:10px;display:flex;justify-content:center;gap:20px;border-bottom:1px solid #ddd;}
-nav a {text-decoration:none;color:#333;font-weight:bold;}
-nav a:hover {color:#ff9800;}
-
-.container {max-width:900px;margin:20px auto;background:white;padding:25px;border-radius:12px;}
-
-.section {padding-top:60px;margin-top:-60px;} /* anchor offset */
-
-.cta {display:block;background:#4caf50;color:white;text-align:center;padding:15px;margin-top:20px;border-radius:8px;text-decoration:none;font-size:18px;}
-.cta:hover {background:#43a047;}
-
-.review {background:#fafafa;padding:10px;margin:10px 0;border-left:4px solid orange;}
-.logos img {height:40px;margin:10px;}
-.cats img {width:100%;border-radius:10px;margin-top:10px;}
-
-.counter {color:red;font-weight:bold;text-align:center;margin:15px 0;}
 .badge {background:gold;padding:5px 10px;border-radius:6px;font-size:12px;}
 
-#timer {font-size:20px;color:#d32f2f;font-weight:bold;text-align:center;margin-top:10px;}
-</style>
-</head>
-<body>
-
-<header>
-<h1>🐱 Deutschkurs für Katzen</h1>
-<p>Offiziell zertifiziert & völlig absurd</p>
-<span class="badge">⭐ 4.9/5 (1.283 Bewertungen)</span>
-</header>
-
-<nav>
-<a href="#medien">Medien</a>
-<a href="#erfolge">Erfolge</a>
-<a href="#bewertungen">Bewertungen</a>
-<a href="#chatbot">Chatbot</a>
-<a href="#features">Features</a>
-<a href="#angebot">Angebot</a>
-</nav>
-
-<div class="container">
-
-<!-- Medien -->
-<h2 id="medien" class="section">🔥 Bekannt aus Medien</h2>
-<div class="logos">
-<img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/RTL_logo_2017.svg">
-<img src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Spiegel_Logo.svg">
-<img src="https://upload.wikimedia.org/wikipedia/commons/5/5a/Trustpilot_logo.png">
-</div>
-
-<div class="counter" id="counter">👀 17 Leute schauen sich das gerade an</div>
-
-<!-- Erfolgreiche Katzen -->
-<h2 id="erfolge" class="section">🐱 Erfolgreiche Katzen</h2>
-<div class="cats">
-<img src="https://images.unsplash.com/photo-1518791841217-8f162f1e1131?auto=format&fit=crop&w=900&q=80">
-<img src="https://images.unsplash.com/photo-1592194996308-7b43878e84a6?auto=format&fit=crop&w=900&q=80">
-</div>
-
-<p><strong>Dieser Kurs ist speziell für Gismo und MacGyver gedacht, zwei wundervolle Katzen aus Kolsass.</strong></p>
-
-<!-- Bewertungen -->
-<h2 id="bewertungen" class="section">⭐ Bewertungen</h2>
-<div class="review">⭐⭐⭐⭐⭐ „Meine Katze nennt mich jetzt ‘Diener’. 5 Sterne.“</div>
-<div class="review">⭐⭐⭐⭐⭐ „Hat jetzt einen Akzent. Weiß nicht warum.“</div>
-<div class="review">⭐⭐⭐⭐⭐ „Sie sagt ‘füttere mich’… ständig.“</div>
-
-<!-- Chatbot -->
-<h2 id="chatbot" class="section">🤖 Katzen-Chatbot</h2>
-<input id="chatInput" placeholder="Sag etwas zu deiner Katze...">
-<button onclick="reply()">Antwort erhalten</button>
-<p id="chatOutput"></p>
-
-<!-- Features -->
-<h2 id="features" class="section">🎁 Features</h2>
-<ul>
-<li>KI Miau Übersetzer</li>
-<li>Telepathisches Lernen</li>
-<li>Traum-basierte Grammatik</li>
-<li>Wiener Katzen-Dialekt</li>
-</ul>
-
-<!-- Angebot -->
-<h2 id="angebot" class="section">🔥 Jetzt zuschlagen!</h2>
-<p><strong>Bestelle innerhalb der nächsten 15 Minuten und deine Katze bekommt einen GRATIS SCHOPF dazu!</strong></p>
-
-<div id="timer">⏳ 15:00</div>
-
-<a class="cta" href="#" onclick="signup()">Kurs sichern + Gratis Schopf</a>
-
-</div>
-
-<script>
-// Chatbot
-function reply(){
- let responses = [
-  "Deine Katze will Snacks.",
-  "Sie respektiert dich nicht.",
-  "Spiel. Jetzt.",
-  "Du wirst beobachtet.",
-  "Füttere mich, Mensch."
- ];
- document.getElementById('chatOutput').innerText = responses[Math.floor(Math.random()*responses.length)];
+/* NAVIGATION */
+nav {
+  background:white;
+  padding:10px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid #ddd;
+  position:sticky;
+  top:0;
+  z-index:1000;
 }
 
-// Fake signup
-function signup(){
- alert("Erfolg! Deine Katze wurde angemeldet. Der Gratis-Schopf ist reserviert.");
+nav .logo {
+  font-weight:bold;
+  color:#ff9800;
+  font-size:20px;
 }
 
-// Live Counter
-setInterval(()=>{
- let num = Math.floor(Math.random()*50)+10;
- document.getElementById('counter').innerText = "👀 " + num + " Leute schauen sich das gerade an";
-},3000);
+nav ul {
+  list-style:none;
+  display:flex;
+  gap:20px;
+  margin:0;
+  padding:0;
+}
 
-// Countdown
-let time = 15 * 60;
-setInterval(()=>{
- let min = Math.floor(time / 60);
- let sec = time % 60;
- if(sec < 10) sec = "0" + sec;
- document.getElementById('timer').innerText = `⏳ ${min}:${sec}`;
- if(time > 0) time--;
-},1000);
-</script>
+nav ul li a {
+  text-decoration:none;
+  color:#333;
+  font-weight:bold;
+}
 
-</body>
-</html>
+nav ul li a:hover {
+  color:#ff9800;
+}
+
+/* Hamburger Button */
+.hamburger {
+  display
